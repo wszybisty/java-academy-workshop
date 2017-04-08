@@ -1,0 +1,146 @@
+{
+	"variables": [],
+	"info": {
+		"name": "workshop2",
+		"_postman_id": "f143ba90-40b6-c4c6-16d0-e82614d370f0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get persons",
+			"request": {
+				"url": "http://localhost:{{port}}/persons",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post persons",
+			"request": {
+				"url": "http://localhost:{{port}}/persons",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Jan\",\n\t\"lastName\": \"Kowalski\",\n\t\"birthday\": \"1984-05-09\",\n\t\"gender\": \"MALE\",\n\t\"enabled\": true,\n\t\"addresses\" : \n\t[\n\t\t{\n\t\t\t\"city\" : \"Rzeszów\",\n\t\t\t\"postcode\" : \"39-201\"\n\t\t\t\"street\" : \"Hanasiewicza 23A/43\"\n\t\t}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "del person",
+			"request": {
+				"url": "http://localhost:{{port}}/persons/5",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get person",
+			"request": {
+				"url": "http://localhost:{{port}}/persons/6",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post persons with addresses",
+			"request": {
+				"url": "http://localhost:{{port}}/persons",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Jan\",\n\t\"lastName\": \"Kowalski\",\n\t\"birthday\": \"1984-05-09\",\n\t\"gender\": \"MALE\",\n\t\"enabled\": true,\n\t\"addresses\" : \n\t[\n\t\t{\n\t\t\t\"city\" : \"Rzeszów\",\n\t\t\t\"postcode\" : \"39-201\",\n\t\t\t\"street\" : \"Hanasiewicza 23A/43\"\n\t\t}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get addresses",
+			"request": {
+				"url": "http://localhost:{{port}}/addresses",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post addresses",
+			"request": {
+				"url": "http://localhost:{{port}}/addresses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"city\" : \"Rzeszów\",\n\t\"postcode\" : \"39-201\",\n\t\"street\" : \"Hanasiewicza 23A/43\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get address",
+			"request": {
+				"url": "http://localhost:{{port}}/addresses/3",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put address",
+			"request": {
+				"url": "http://localhost:{{port}}/addresses",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"personId\": null,\n  \"city\": \"Rzeszów\",\n  \"postcode\": \"39-201\",\n  \"street\": \"Hanasiewicza 23A/43\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
