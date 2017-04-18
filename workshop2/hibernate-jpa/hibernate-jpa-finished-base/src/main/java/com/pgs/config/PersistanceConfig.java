@@ -44,4 +44,35 @@ public class PersistanceConfig {
     @Value("${hibernate.show_sql}")
     private String showSql;
     
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        
+        dataSource.setUrl(url);
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        
+        return dataSource;
+    }
+    
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactory.setDataSource(dataSource());
+        entityManagerFactory.setPackagesToScan("com.pgs.entity");
+        entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", hibernateDialect);
+        jpaProperties.put("hibernate.hbm2ddl.auto", hbm2ddl);
+        entityManagerFactory.setJpaProperties(jpaProperties);
+        
+        return entityManagerFactory;
+    }
+    
+    @Bean
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        return new JpaTransactionManager(entityManagerFactory);
+    }
+    
 }

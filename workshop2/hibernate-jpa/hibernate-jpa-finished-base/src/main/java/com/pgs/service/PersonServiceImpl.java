@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Luke on 2017-04-02.
  */
 @Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
 
     @Autowired

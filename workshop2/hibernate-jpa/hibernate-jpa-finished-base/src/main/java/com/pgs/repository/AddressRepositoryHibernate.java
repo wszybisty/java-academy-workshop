@@ -28,8 +28,8 @@ public class AddressRepositoryHibernate extends BaseRepositoryHibernate implemen
     @Override
     public Address save(Address entity) {
         entityManager.persist(entity);
-        //throw new RuntimeException();
-        return entity;
+        throw new RuntimeException();
+        //return entity;
     }
 
     @Override

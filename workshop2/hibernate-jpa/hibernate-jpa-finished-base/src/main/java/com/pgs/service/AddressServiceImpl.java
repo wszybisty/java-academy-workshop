@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Luke on 2017-04-02.
  */
 @Service
+@Transactional
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
@@ -40,6 +41,7 @@ public class AddressServiceImpl implements AddressService {
         final Address addressEntity = addressMapper.toEntity(addressDTO);
         Address savedEntity = addressRepository.save(addressEntity);
         addressRepository.flush();
+        
         return addressMapper.toDto(savedEntity);
     }
 
