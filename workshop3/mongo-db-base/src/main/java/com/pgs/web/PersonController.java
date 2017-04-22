@@ -25,7 +25,7 @@ public class PersonController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     @ResponseBody
-    public PersonDTO findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") String id) {
         return personService.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PersonController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-    public void delete(@PathVariable("id") Long id) {
+    public void delete(@PathVariable("id") String id) {
         personService.delete(id);
     }
 }

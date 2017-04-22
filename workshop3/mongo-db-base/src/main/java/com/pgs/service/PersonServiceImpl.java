@@ -22,9 +22,6 @@ public class PersonServiceImpl implements PersonService {
     private PersonRepository personRepository;
 
     @Autowired
-    private AddressService addressService;
-
-    @Autowired
     private PersonMapper personMapper;
 
     @Override
@@ -33,7 +30,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonDTO findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") String id) {
         return personMapper.toDTO(personRepository.findById(id));
     }
 
@@ -41,25 +38,11 @@ public class PersonServiceImpl implements PersonService {
     public PersonDTO add(PersonDTO personDTO) {
         final Person personEntity = personMapper.toEntity(personDTO);
         Person savedEntity = personRepository.save(personEntity);
-
-        List<AddressDTO> savedAddresses = new ArrayList<>();
-        final List<AddressDTO> addresses = personDTO.getAddresses();
-
-        if (addresses != null) {
-            for (AddressDTO address : addresses) {
-                address.setPersonId(savedEntity.getId());
-                AddressDTO savedAddress = addressService.add(address);
-                savedAddresses.add(savedAddress);
-            }
-        }
-        final PersonDTO dto = personMapper.toDTO(savedEntity);
-        dto.setAddresses(savedAddresses);
-        personRepository.flush();
-        return dto;
+        return personMapper.toDTO(savedEntity);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         personRepository.delete(id);
     }
 

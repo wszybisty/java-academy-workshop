@@ -7,10 +7,13 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+@Document(collection = "persons")
 public class Person implements Serializable {
 
-    private Long id;
+    private String id;
 
     @NotNull
     @Length(min = 2, max = 32)
@@ -23,6 +26,7 @@ public class Person implements Serializable {
     @NotNull
     private Date dateOfBirth;
 
+    @Field(value = "person_gender")
     private Gender gender;
 
     private Boolean active;
@@ -33,7 +37,7 @@ public class Person implements Serializable {
     }
 
 
-    public Person(Long id, String firstName, String lastName, Date dateOfBirth, Gender gender, Boolean active) {
+    public Person(String id, String firstName, String lastName, Date dateOfBirth, Gender gender, Boolean active) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,11 +46,11 @@ public class Person implements Serializable {
         this.active = active;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

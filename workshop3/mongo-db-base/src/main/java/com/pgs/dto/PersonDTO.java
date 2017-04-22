@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class PersonDTO {
 
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private Date birthday;
@@ -16,11 +16,11 @@ public class PersonDTO {
     private Boolean enabled;
     private List<AddressDTO> addresses;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

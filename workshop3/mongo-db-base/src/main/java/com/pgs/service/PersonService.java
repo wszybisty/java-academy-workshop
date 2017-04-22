@@ -11,9 +11,9 @@ import java.util.List;
 public interface PersonService {
     List<PersonDTO> findAll();
 
-    PersonDTO findById(@PathVariable("id") Long id);
+    PersonDTO findById(@PathVariable("id") String id);
 
     PersonDTO add(PersonDTO personDTO);
 
-    void delete(Long id);
+    void delete(String id);
 }

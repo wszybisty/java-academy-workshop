@@ -17,6 +17,4 @@ public interface CrudRepository<E, ID> {
     List<E> save(List<E> entities);
 
     void delete(ID id);
-
-    void flush();
 }
