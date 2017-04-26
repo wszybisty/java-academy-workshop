@@ -13,3 +13,4 @@ hs_err_pid*
 
 # Any target directory #
 target
+/workshop2/hibernate-jpa/hibernate-jpa-tests/nbproject/
